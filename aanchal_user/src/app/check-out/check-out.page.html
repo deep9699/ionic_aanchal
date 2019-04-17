@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+    <ion-title>check_out</ion-title>
+    </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<div *ngIf="!add_flag">
+  <ion-label style="font-size: 20px;">Please enter Your Address</ion-label>
+  <ion-input type="text" name="Address" placeholder="Enter Your Address" [(ngModel)]="Address"></ion-input>
+  <ion-button (click)="AddAddress()">Add Address</ion-button>
+</div>
+
+<div *ngIf="add_flag">
+    
+    <ion-chip>
+        <ion-label style="font-size: 20px;">Billing Information  </ion-label>
+    </ion-chip>
+      
+    <br><br>
+
+  <ion-item>
+    <ion-label style="font-size: 18px;">Name  :</ion-label>
+    <ion-input readonly type="text" style="font-size: 18px;text-align: center;" value="{{Name}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label style="font-size: 18px;">Mobile No  :</ion-label>
+      <ion-input readonly type="text" style="font-size: 18px;text-align: center;" value="{{Mobile_no}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label style="font-size: 18px;">Address :</ion-label>
+      <ion-input readonly type="text" style="font-size: 18px;text-align: center;" value="{{Address}}"></ion-input>
+  </ion-item>
+    
+
+<ion-card *ngFor="let item of check_out">
+    <ion-row>
+      <ion-col size="7">
+      <ion-card-content>
+          <ion-label style="font-size: 20px;">{{item.Product_name}}</ion-label><br>
+          <ion-label >Quantity : {{item.Quantity}}</ion-label><br>
+          <ion-label >Price : {{item.Product_price}}</ion-label><br>
+          <ion-label >Color : {{item.Color_name}}</ion-label><br>
+          <ion-label >Size : {{item.Size_name}}</ion-label><br>
+          <ion-label >Total : {{item.Product_price*item.Quantity}}</ion-label><br>
+      </ion-card-content>
+    </ion-col>
+    <ion-col size="5">
+      <br>
+        <img style="height: 120px;width: 100%;" src="{{endPoint}}/images/Product_img/{{item.Product_image}}" alt="" >
+    </ion-col>
+  </ion-row>
+    </ion-card>
+
+
+<ion-item>
+    <ion-label style="font-size: 18px;">Total :</ion-label>
+    <ion-input type="text" style="font-size: 18px;text-align: center;" value="{{total}}"></ion-input>
+</ion-item>
+
+    <ion-button (click)="oncheckout()" size="block"><ion-icon ios="ios-cart" md="md-cart"></ion-icon>&nbsp;&nbsp;Buy Now</ion-button>
+
+
+  </div>
+  
+
+</ion-content>

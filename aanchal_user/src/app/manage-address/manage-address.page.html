@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons size="large" (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+    <ion-title>manage_address</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <h5>Full Name : </h5>
+    <ion-item>
+        <ion-input type="text" name="Name" required placeholder="Enter Your Name" [(ngModel)]="Name" disabled></ion-input>
+    </ion-item>
+    
+  <h5>Email Id : </h5>
+    <ion-item>
+        <ion-input type="email" name="Email_id" required placeholder="Enter Your Email id" [(ngModel)]="Email_id" disabled></ion-input>
+    </ion-item>
+
+  <h5>Address : </h5>
+  <ion-item>
+      <ion-textarea placeholder="Enter Your Address" [(ngModel)]="Address"></ion-textarea>
+    </ion-item>
+
+    <ion-button *ngIf="flag" expand="block" (click)="onAddressdone()">Update</ion-button>
+    <ion-button *ngIf="!flag" expand="block" (click)="onAddressdone()">Add</ion-button>
+</ion-content>

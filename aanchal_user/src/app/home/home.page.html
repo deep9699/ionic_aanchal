@@ -1,0 +1,125 @@
+<!-- 
+    <div style="background: white;">
+        <br>
+        <ion-searchbar style="background: white;" type="text" (keyup)="searchfilter($event.target.value)" placeholder="Search for Products..." autofocus></ion-searchbar>
+    </div>
+    <div>
+          <ul style="background: white;">
+            <li style="background: white;" *ngFor="let result of Prod_list" (click)="onclickProduct(result)">
+              <img src="http://localhost:3000/images/Product_img/{{result.Product_image}}" alt="" width="50" height="50">
+              {{result.Product_name}}
+            </li>
+          </ul>
+  </div> -->
+
+<div class="header">
+  <ion-header>
+      <ion-toolbar>
+        <h5 style="text-align: center;font-family: 'Times New Roman', Times, serif;color:white">AANCHAL FASHION DESIGN</h5>
+          <ion-searchbar style="color: rgb(123, 0, 163);" type="text" (keyup)="searchfilter($event.target.value)" placeholder="Search for Products..." autofocus></ion-searchbar>
+          <ul *ngIf="s_flag==false"  >
+              <li style="color: white;list-style: none;" *ngFor="let result of Prod_list" (click)="onclickProduct(result)">
+                <img src="{{endPoint}}/images/Product_img/{{result.Product_image}}" alt="" width="50" height="50">
+                {{result.Product_name}}
+              </li>
+            </ul>            
+      </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content style="background: white;">
+    <div  *ngIf="s_flag">
+  <ion-slides scrollbar="true" #mySlider autoplay="20" loop="true" speed="30" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+    <ion-slide *ngFor="let item of ImageUrl" (click)="onclickSlideshow(item)" >
+      <img style="height: 200px;" src="{{endPoint}}/images/Product_img/{{item}}" alt="" >
+    </ion-slide>
+  </ion-slides>
+
+
+  <ion-item>
+      <ion-label position="floating" style="font-size: 20px;">Browse New Products</ion-label>
+  </ion-item>
+  <ion-row>
+    <ion-col size="6" *ngFor="let item of New_Product_list">
+      
+      <ion-card style="width: 130px;height: 200px;background-color: white;" (click)="onclickProduct(item)">
+  
+      <ion-card-header>
+            <ion-card-title text-wrap>{{item.Product_name}}</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+          <img style="height: 100px;"  src="{{endPoint}}/images/Product_img/{{item.Product_image}}" alt="" >
+          <ion-card-subtitle>{{item.Product_price}}</ion-card-subtitle>
+      </ion-card-content>
+    
+    </ion-card>
+    
+    </ion-col>  
+  </ion-row>
+  
+
+  <ion-item>
+      <ion-label position="floating" style="font-size: 20px;">Top Selling Products</ion-label>
+  </ion-item>
+  <ion-row>
+      <ion-slides pager="true" #mySlider1 >
+          <ion-slide (click)="onclickSlideshow(item)">
+      
+              <ion-col size="6" *ngFor="let item of Top_selling_list">
+                  <ion-card style="width: 130px;height: 200px;background-color: white;" (click)="onclickProduct(item)">
+          
+                    <ion-card-header>
+                          <ion-card-title text-wrap>{{item.Product_name}}</ion-card-title>
+                    </ion-card-header>
+                    
+                    <ion-card-content>
+                        <img style="height: 100px;"  src="{{endPoint}}/images/Product_img/{{item.Product_image}}" alt="" >
+                        <ion-card-subtitle>{{item.Product_price}}</ion-card-subtitle>
+                    </ion-card-content>
+                  
+                  </ion-card>                  
+                </ion-col>    
+
+
+          </ion-slide>
+      </ion-slides>  
+      
+  </ion-row>
+
+
+  <ion-item>
+      <ion-label position="floating" style="font-size: 20px;">All Products</ion-label>
+  </ion-item>
+          <ion-row>
+              <ion-col size="6" *ngFor="let item of Prod_list">
+                
+                <ion-card style="width: 130px;height: 200p;background-color: white;" (click)="onclickProduct(item)">
+            
+                <ion-card-header>
+                      <ion-card-title text-wrap>{{item.Product_name}}</ion-card-title>
+                </ion-card-header>
+                
+                <ion-card-content>
+                    <img style="height: 100px;"  src="{{endPoint}}/images/Product_img/{{item.Product_image}}" alt="" >
+                    <ion-card-subtitle>{{item.Product_price}}</ion-card-subtitle>
+                </ion-card-content>
+              
+              </ion-card>
+              
+              </ion-col>  
+            </ion-row>
+  
+
+<!-- 
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+  
+
+                  
+  
+  
+
+</div>
+</ion-content>

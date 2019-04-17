@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<div *ngIf="log_flag==0">
+  <ion-label >You need to Log in First</ion-label><br>
+  <ion-button (click)="onclickLogin()">Log In</ion-button>
+</div>
+
+<div *ngIf="log_flag==1">
+
+
+      <ion-card *ngFor="let item of Cart_details">
+        <ion-row>
+          <ion-col size="7">
+          <ion-card-content>
+              <ion-label style="font-size: 20px;">{{item.Product_name}}</ion-label><br>
+              <ion-label >Quantity : {{item.Quantity}}</ion-label><br>
+              <ion-label >Price : {{item.Product_price}}</ion-label><br>
+              <ion-label >Color : {{item.Color_name}}</ion-label><br>
+              <ion-label >Size : {{item.Size_name}}</ion-label><br>
+              <ion-label >Total : {{item.Product_price*item.Quantity}}</ion-label><br>
+          </ion-card-content>
+        </ion-col>
+        <ion-col size="5">
+          <br>
+            <img style="height: 100px;width: 100%;" src="{{endPoint}}/images/Product_img/{{item.Product_image}}" alt="" >
+            &nbsp;&nbsp;<ion-button (click)="oncart_Delete(item)" color="danger"><ion-icon ios="ios-trash" md="md-trash"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+        </ion-card>
+        <ion-label style="font-size: 20px;">Total : {{Total}}</ion-label><br>
+        <ion-button (click)="clickOnCheckOut()" size="block">CheckOut</ion-button>
+
+</div>
+
+<div *ngIf="log_flag==2">
+    <ion-label style="font-size: 20px;">Sorry Empty Cart</ion-label><br>
+</div>
+</ion-content>

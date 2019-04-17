@@ -1,0 +1,20 @@
+ion-content{
+        --background: url(../../assets/images/sign_up.jpg) center;
+}
+
+
+
+ion-card{
+    margin-top: -10px;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+ion-item{
+    
+    --background: transparent;
+    border: medium none;
+    color:white;
+}
+

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons size="large" (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+    <ion-title>manage_profile</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>//
+
+<ion-content padding>
+
+  <h5>Full Name : </h5>
+    <ion-item>
+        <ion-input type="text" name="Name" required placeholder="Enter Your Name" [(ngModel)]="Name" disabled></ion-input>
+    </ion-item>
+    
+  <h5>Email Id : </h5>
+    <ion-item>
+        <ion-input type="email" name="Email_id" required placeholder="Enter Your Email id" [(ngModel)]="Email_id" disabled></ion-input>
+    </ion-item>
+    
+  <h5>Gender : </h5>
+    <ion-button size="large" fill="outline" [hidden]="!g_flag"><img height=70px width=50px src="../../assets/images/male.jpg"></ion-button>&nbsp;&nbsp;
+    <ion-button size="large" fill="outline" [hidden]="g_flag"><img height=70px width=50px src="../../assets/images/female.jpg"></ion-button>
+
+    <h5>Mobile No : </h5>
+    <ion-item>
+        <ion-input type="text" name="mobile_no" required placeholder="Enter Your Mobile Number" [(ngModel)]="mobile_no"></ion-input>
+    </ion-item>
+
+    <h5>Birth Date : </h5>
+    <ion-item>
+        <ion-datetime display-format="DD MMM, YYYY" placeholder="Select Date" max="2000" [(ngModel)]="dob" ></ion-datetime>
+    </ion-item>
+
+    <ion-button expand="block" (click)="onUpdate()">Update</ion-button>
+</ion-content>
+

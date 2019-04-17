@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+    <ion-title>past_order</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="log_flag==0">
+        <ion-label >You need to Log in First</ion-label><br>
+        <ion-button (click)="onclickLogin()">Log In</ion-button>
+      </div>
+      
+      <div *ngIf="log_flag==1">
+      
+      
+            <ion-card *ngFor="let item of bill_arr">
+              <ion-row>
+                <ion-row>
+                    <img style="height: 150px;width: 100%;" src="http://localhost:3000/images/Product_img/{{item.Product_image}}" alt="" >
+                </ion-row>
+                <ion-row>
+                <ion-card-content>
+                    <ion-label style="font-size: 20px;">{{item.Product_name}}</ion-label><br>
+                    <ion-label >Quantity : {{item.Quantity}}</ion-label><br>
+                    <ion-label >Price : {{item.Product_price | currency:'INR'}}</ion-label><br>
+                    <ion-label >Color : {{item.Color_name}}</ion-label><br>
+                    <ion-label >Size : {{item.Size_name}}</ion-label><br>
+                    <ion-label >Date : {{item.Bill_date | date}}</ion-label><br>
+                    <ion-label >Total : {{item.Product_price*item.Quantity | currency:'INR'}}</ion-label><br>
+                </ion-card-content>
+            </ion-row>
+            </ion-row>
+          </ion-card>
+      </div>
+      
+      <div *ngIf="log_flag==2">
+          <ion-label style="font-size: 20px;">Sorry No Past Orders</ion-label><br>
+      </div>
+      
+</ion-content>

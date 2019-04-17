@@ -1,0 +1,57 @@
+
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+    <ion-title><h5 style="text-align: center;font-family: 'Times New Roman', Times, serif;color:white">AANCHAL FASHION DESIGN</h5></ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+    
+<ion-content>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title><h3 style="text-align: center;font-family: 'Times New Roman', Times, serif;color:white">Log In</h3></ion-card-title>
+    </ion-card-header>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+    <ion-item>
+        <ion-input type="text" formControlName="email" name="Email_id"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"   required placeholder="Enter Your Email id" [(ngModel)]="Email_id"></ion-input>
+    </ion-item>  
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <br>
+            <div style="color: red;" *ngIf="f.email.errors.required">Email is required</div>
+            <div style="color: red;" *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+      
+      </div>
+    
+      <div class="form-group">
+    <ion-item>
+            <ion-input  formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"  [type]="pass_flag ? 'password' : 'text'" name="Pass" required placeholder="Enter Your Password" [(ngModel)]="Password" maxlength=8></ion-input> 
+            <ion-icon (click)="onPass_flag()" name="{{pass_flag ? 'eye' : 'eye-off'}}"></ion-icon>
+      </ion-item>
+        
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div style="color: red;" *ngIf="f.password.errors.required">Password is required</div>
+            <div style="color: red;" *ngIf="f.password.errors.minlength">Password must be at least 8 characters</div>
+        </div>
+    
+    </div>
+
+
+    <ion-button type="onSubmit()" expand="block" >Log in</ion-button>
+    <ion-item (click)="presentAlertPrompt()" button="true"><ion-label>Forget Password?</ion-label></ion-item>
+
+    
+  </form>
+  </ion-card>
+</ion-content>
+  
+
+
+

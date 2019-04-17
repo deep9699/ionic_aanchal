@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>
+        <ion-buttons (click)="onclickBack()"><ion-icon size="large" name="arrow-round-back"></ion-icon>&nbsp;&nbsp;
+        <h3>{{Product_name}}</h3>
+      </ion-buttons>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    
+    <img style="height: 250px;width: 100%;" src="{{endPoint}}/images/Product_img/{{Product_img}}" alt="" >
+    <ion-item>
+        <ion-label>
+          Price : {{Product_price}}
+        </ion-label>
+      </ion-item>
+
+  
+      <h5>Select Size : {{Selected_size}}</h5>
+      <ion-radio-group *ngFor="let item of Sizes">
+          <ion-button size="small" (click)="onclick_Size(item)" [disabled]="(item==Selected_size)?'true':'false'">{{item}}</ion-button>
+      </ion-radio-group>
+  
+
+  
+      <h5>Select Color : {{Selected_color}}</h5>
+      <ion-radio-group *ngFor="let item of Colors">
+          <ion-button size="small" (click)="onclick_Color(item)" [disabled]="(item==Selected_color)?'true':'false'">{{item}}</ion-button>
+      </ion-radio-group>
+    
+      <h5>Quantity</h5>
+      <ion-item>
+        <ion-input type="number" [(ngModel)]="qty" min="1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          {{Product_desc}}
+        </ion-label>
+      </ion-item>
+
+      
+          <ion-button expand="block" (click)="onclickAddCart()"><ion-icon name="cart"></ion-icon> &nbsp; &nbsp; Add To Cart</ion-button>
+      
+    
+</ion-content>
